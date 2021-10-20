@@ -32,12 +32,12 @@ export const TextInput = ({
   return (
     <div className={cn(s.wrapper, className)}>
       {title && (
-        <label htmlFor={field?.name} className={s.title}>
+        <label htmlFor={name} className={s.title}>
           {title}
         </label>
       )}
       <input
-        id={field?.name}
+        id={name}
         className={cn(s.input, showError && s.inputError)}
         type={type}
         placeholder={placeholder}
