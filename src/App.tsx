@@ -1,7 +1,14 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-function App() {
-  return <h1>Form</h1>;
-}
+import { paths } from './paths';
 
-export default App;
+export const App = () => {
+  return (
+    <Switch>
+      <Route path={paths.login()}>
+        <h1>Login page</h1>
+      </Route>
+    </Switch>
+  );
+};
