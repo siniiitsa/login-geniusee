@@ -15,6 +15,7 @@ export const registrationSchema = Yup.object().shape({
   email: Yup.string().email("Not a valid email").required("Email is required"),
   password: Yup.string()
     .min(6, "Should be at least 6 characters long")
+    .max(12, "Should not be longer then 12 characters")
     .matches(/[A-Z]/, "Should have at least 1 capital letter")
     .required("Password is required"),
   passwordConfirmation: Yup.string()
