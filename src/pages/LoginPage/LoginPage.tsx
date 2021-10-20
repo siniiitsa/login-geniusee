@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { Field, Formik } from 'formik';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Button, TextInput } from '../../components/core';
 import { AuthForm, AuthLayout } from '../../components/shared';
@@ -20,11 +20,14 @@ const initialValues: LoginFormValues = {
 };
 
 export const LoginPage = () => {
+  const history = useHistory();
+
   const handleSubmit = (values: Partial<LoginFormValues>) => {
     // ...HTTP request should happen here
 
     // eslint-disable-next-line no-console
     console.log(values);
+    history.push(paths.home());
   };
 
   return (
