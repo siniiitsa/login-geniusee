@@ -16,7 +16,6 @@ export const Button = ({
   disabled = false,
   ...props
 }: IProps): ReactElement => {
-  console.log("🚀 ~ file: Button.tsx ~ line 19 ~ disabled", disabled);
   return (
     <button
       className={cn(s.button, className, disabled && s.disabled)}
