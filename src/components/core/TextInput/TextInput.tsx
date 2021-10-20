@@ -23,9 +23,9 @@ export const TextInput = ({
   form,
   ...props
 }: IProps) => {
-  const name: string | null = field?.name ?? null;
-  const error: string | null = name && form.errors[name];
-  const touched: boolean = name ? form.touched[name] : false;
+  const name: string = field?.name as string;
+  const error = form.errors[name];
+  const touched = form.touched[name];
 
   const showError = error && touched;
 
