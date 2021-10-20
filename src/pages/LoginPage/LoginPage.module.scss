@@ -1,3 +1,28 @@
 .textInput {
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.submitButton {
+  margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.registerMessage {
+  text-align: center;
+  font-weight: bold;
+}
+
+.link {
+  color: Teal;
+
+  &:hover {
+    color: DarkCyan;
+  }
+}
+
+.noPasswordLink {
+  font-weight: bold;
+  text-align: center;
 }
