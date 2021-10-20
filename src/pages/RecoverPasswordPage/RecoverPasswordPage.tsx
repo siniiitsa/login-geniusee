@@ -54,7 +54,7 @@ export const RecoverPasswordPage = () => {
         </Link>
       </p>
       <Link className={cn(s.link, s.noPasswordLink)} to={paths.login()}>
-        Back to Log in
+        Back to Login
       </Link>
     </AuthForm>
   );
@@ -65,7 +65,7 @@ export const RecoverPasswordPage = () => {
         Success! Check your Email for further instructions.
       </h3>
       <Link className={cn(s.link, s.backToLoginLink)} to={paths.login()}>
-        Back to Log in
+        Back to Login
       </Link>
     </AuthForm>
   );
