@@ -7,14 +7,15 @@
 }
 
 .input {
-  $frameColor: rgba(0, 0, 0, 0.06);
+  $frameColor: rgba(0, 0, 0, 0.1);
 
   width: 100%;
   padding: 10px 15px;
   border-radius: 5px;
   border: none;
   outline: 1px solid $frameColor;
-  box-shadow: $frameColor 0px 2px 4px 0px inset;
+  box-shadow: $frameColor 0px 0px 5px 0px inset,
+    $frameColor 0px 0px 1px 0px inset;
 
   &::placeholder {
     color: LightGray;
