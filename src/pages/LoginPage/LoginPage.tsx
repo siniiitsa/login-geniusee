@@ -38,7 +38,7 @@ export const LoginPage = () => {
         validationSchema={loginSchema}>
         {({ isValid }) => {
           return (
-            <AuthForm title="Log in to you account:">
+            <AuthForm title="Log in to your account:">
               <Field
                 className={s.textInput}
                 component={TextInput}
