@@ -14,7 +14,7 @@ type RecoverPasswordFormValues = {
 };
 
 const initialValues: RecoverPasswordFormValues = {
-  email: "x@x.com",
+  email: "",
 };
 
 enum PasswordRecoveryStates {
