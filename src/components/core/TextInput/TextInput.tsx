@@ -8,21 +8,23 @@ interface IProps {
   className?: string;
   value?: string | number;
   title?: string;
-  error?: string;
   placeholder?: string;
   type?: string;
   field?: FieldInputProps<string>;
+  form?: any;
 }
 
 export const TextInput = ({
   className,
   title,
-  error,
   placeholder = title,
   type = "text",
   field,
+  form,
   ...props
 }: IProps) => {
+  const error = form.errors[field?.name ?? ""];
+
   return (
     <div className={cn(s.wrapper, className)}>
       {title && <span className={s.title}>{title}</span>}

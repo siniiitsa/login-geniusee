@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Button, TextInput } from '../../components/core';
 import { AuthForm, AuthLayout } from '../../components/shared';
+import { loginSchema } from '../../validation';
 import s from './LoginPage.module.scss';
 
 type LoginFormValues = {
@@ -25,28 +26,33 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        {({ isSubmitting }) => (
-          <AuthForm>
-            <Field
-              className={s.textInput}
-              component={TextInput}
-              title="Email"
-              name="email"
-              placeholder="mail@genniuse.com"
-            />
-            <Field
-              className={s.textInput}
-              component={TextInput}
-              title="Password"
-              name="password"
-              type="password"
-            />
-            <Button type="submit" isLoading={isSubmitting}>
-              Log in
-            </Button>
-          </AuthForm>
-        )}
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={loginSchema}>
+        {({ isValid }) => {
+          return (
+            <AuthForm>
+              <Field
+                className={s.textInput}
+                component={TextInput}
+                title="Email"
+                name="email"
+                placeholder="mail@genniuse.com"
+              />
+              <Field
+                className={s.textInput}
+                component={TextInput}
+                title="Password"
+                name="password"
+                type="password"
+              />
+              <Button type="submit" disabled={!isValid}>
+                Log in
+              </Button>
+            </AuthForm>
+          );
+        }}
       </Formik>
     </AuthLayout>
   );
