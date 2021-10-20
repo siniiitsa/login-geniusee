@@ -23,19 +23,28 @@ export const TextInput = ({
   form,
   ...props
 }: IProps) => {
-  const error = form.errors[field?.name ?? ""];
+  const name: string | null = field?.name ?? null;
+  const error: string | null = name && form.errors[name];
+  const touched: boolean = name ? form.touched[name] : false;
+
+  const showError = error && touched;
 
   return (
     <div className={cn(s.wrapper, className)}>
-      {title && <span className={s.title}>{title}</span>}
+      {title && (
+        <label htmlFor={field?.name} className={s.title}>
+          {title}
+        </label>
+      )}
       <input
-        className={cn(s.input, error && s.inputError)}
+        id={field?.name}
+        className={cn(s.input, showError && s.inputError)}
         type={type}
         placeholder={placeholder}
         {...field}
         {...props}
       />
-      {error && <span className={s.error}>{error}</span>}
+      {showError && <span className={s.error}>{error}</span>}
     </div>
   );
 };
