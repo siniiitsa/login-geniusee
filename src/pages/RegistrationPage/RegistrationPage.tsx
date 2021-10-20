@@ -1,5 +1,6 @@
+import cn from 'classnames';
 import { Field, Formik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button, TextInput } from '../../components/core';
@@ -24,13 +25,81 @@ const initialValues: RegistrationFormValues = {
   passwordConfirmation: "",
 };
 
+enum RegistrationStates {
+  ongoing,
+  finished,
+}
+
 export const RegistrationPage = () => {
+  const [state, setState] = useState<RegistrationStates>(
+    RegistrationStates.ongoing
+  );
+
   const handleSubmit = (values: Partial<RegistrationFormValues>) => {
     // ...HTTP request should happen here
 
     // eslint-disable-next-line no-console
     console.log(values);
+    setState(RegistrationStates.finished);
   };
+
+  const renderRegistrationForm = (isValid: boolean) => (
+    <AuthForm title="Provide your info below:">
+      <Field
+        className={s.textInput}
+        component={TextInput}
+        title="First name"
+        name="firstName"
+      />
+      <Field
+        className={s.textInput}
+        component={TextInput}
+        title="Last name"
+        name="lastName"
+      />
+      <Field
+        className={s.textInput}
+        component={TextInput}
+        title="Email"
+        name="email"
+        placeholder="mail@genniuse.com"
+      />
+      <Field
+        className={s.textInput}
+        component={TextInput}
+        title="Password"
+        name="password"
+        type="password"
+      />
+      <Field
+        className={s.textInput}
+        component={TextInput}
+        title="Confirm password"
+        name="passwordConfirmation"
+        type="password"
+      />
+      <Button className={s.submitButton} type="submit" disabled={!isValid}>
+        Register
+      </Button>
+      <p className={s.alreadyHaveAccMessage}>
+        Already have an account?{" "}
+        <Link className={s.link} to={paths.login()}>
+          Log in
+        </Link>
+      </p>
+    </AuthForm>
+  );
+
+  const renderSuccessMessage = () => (
+    <AuthForm>
+      <h3 className={s.alreadyHaveAccMessage}>
+        You registration was a success!
+      </h3>
+      <Link className={cn(s.link, s.backToLoginLink)} to={paths.login()}>
+        Now you can Log in
+      </Link>
+    </AuthForm>
+  );
 
   return (
     <AuthLayout>
@@ -39,55 +108,11 @@ export const RegistrationPage = () => {
         onSubmit={handleSubmit}
         validationSchema={registrationSchema}>
         {({ isValid }) => {
-          return (
-            <AuthForm title="Provide your info below:">
-              <Field
-                className={s.textInput}
-                component={TextInput}
-                title="First name"
-                name="firstName"
-              />
-              <Field
-                className={s.textInput}
-                component={TextInput}
-                title="Last name"
-                name="lastName"
-              />
-              <Field
-                className={s.textInput}
-                component={TextInput}
-                title="Email"
-                name="email"
-                placeholder="mail@genniuse.com"
-              />
-              <Field
-                className={s.textInput}
-                component={TextInput}
-                title="Password"
-                name="password"
-                type="password"
-              />
-              <Field
-                className={s.textInput}
-                component={TextInput}
-                title="Confirm password"
-                name="passwordConfirmation"
-                type="password"
-              />
-              <Button
-                className={s.submitButton}
-                type="submit"
-                disabled={!isValid}>
-                Register
-              </Button>
-              <p className={s.alreadyHaveAccMessage}>
-                Already have an account?{" "}
-                <Link className={s.link} to={paths.login()}>
-                  Log in
-                </Link>
-              </p>
-            </AuthForm>
-          );
+          if (state === RegistrationStates.ongoing) {
+            return renderRegistrationForm(isValid);
+          }
+
+          return renderSuccessMessage();
         }}
       </Formik>
     </AuthLayout>
