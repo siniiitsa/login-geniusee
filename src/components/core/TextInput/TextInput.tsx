@@ -23,7 +23,7 @@ export const TextInput = ({
   form,
   ...props
 }: IProps) => {
-  const name: string = field?.name as string;
+  const name = field?.name as string;
   const error = form.errors[name];
   const touched = form.touched[name];
 
