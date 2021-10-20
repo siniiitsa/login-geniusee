@@ -44,7 +44,7 @@ export const RegistrationPage = () => {
   };
 
   const renderRegistrationForm = (isValid: boolean) => (
-    <AuthForm title="Provide your info below:">
+    <AuthForm className={s.form} title="Provide your info below:">
       <Field
         className={s.textInput}
         component={TextInput}

@@ -1,6 +1,11 @@
+.form {
+  padding-top: 25px;
+  padding-bottom: 15px;
+}
+
 .textInput {
   &:not(:last-child) {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
   }
 }
 
