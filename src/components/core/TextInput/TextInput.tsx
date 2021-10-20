@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { FieldInputProps } from 'formik';
 import React from 'react';
 
 import s from './TextInput.module.scss';
@@ -10,15 +11,17 @@ interface IProps {
   error?: string;
   placeholder?: string;
   type?: string;
+  field?: FieldInputProps<string>;
 }
 
 export const TextInput = ({
   className,
-  value,
   title,
   error,
   placeholder = title,
   type = "text",
+  field,
+  ...props
 }: IProps) => {
   return (
     <div className={cn(s.wrapper, className)}>
@@ -26,8 +29,9 @@ export const TextInput = ({
       <input
         className={s.input}
         type={type}
-        value={value}
         placeholder={placeholder}
+        {...field}
+        {...props}
       />
       {error && <span className={s.error}>{error}</span>}
     </div>

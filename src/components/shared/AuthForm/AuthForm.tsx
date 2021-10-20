@@ -1,3 +1,4 @@
+import { Form } from 'formik';
 import React, { ReactElement, ReactNode } from 'react';
 
 import s from './AuthForm.module.scss';
@@ -11,7 +12,9 @@ export const AuthForm = ({ className, children }: IProps): ReactElement => {
   return (
     <div className={s.form}>
       <span className={s.logo}>Genniuse</span>
-      <div className={s.content}>{children}</div>
+      <Form autoComplete="off">
+        <div className={s.content}>{children}</div>
+      </Form>
     </div>
   );
 };
