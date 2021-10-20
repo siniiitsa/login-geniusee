@@ -29,7 +29,7 @@ export const TextInput = ({
     <div className={cn(s.wrapper, className)}>
       {title && <span className={s.title}>{title}</span>}
       <input
-        className={s.input}
+        className={cn(s.input, error && s.inputError)}
         type={type}
         placeholder={placeholder}
         {...field}
