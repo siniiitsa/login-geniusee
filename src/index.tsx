@@ -1,3 +1,6 @@
+import './styles/global.scss';
+import 'normalize.css';
+
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import ReactDOM from 'react-dom';

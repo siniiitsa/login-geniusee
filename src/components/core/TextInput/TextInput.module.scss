@@ -1,0 +1,32 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-bottom: 22px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid WhiteSmoke;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+  &:hover {
+    outline: 1px solid SlateGray;
+  }
+
+  &:focus {
+    outline: 2px solid DimGray;
+  }
+}
+
+.error {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: OrangeRed;
+}
