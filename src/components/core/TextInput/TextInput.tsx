@@ -31,13 +31,8 @@ export const TextInput = ({
 
   return (
     <div className={cn(s.wrapper, className)}>
-      {title && (
-        <label htmlFor={name} className={s.title}>
-          {title}
-        </label>
-      )}
+      {title && <label className={s.title}>{title}</label>}
       <input
-        id={name}
         className={cn(s.input, showError && s.inputError)}
         type={type}
         placeholder={placeholder}
